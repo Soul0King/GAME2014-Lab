@@ -14,10 +14,20 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     Boundary bounds;
 
+    [SerializeField]
+    private Transform bulletSpawn;
+
+    [SerializeField]
+    int frameDelay = 10;
+
+    private BulletManager bulletManager;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        bulletManager = BulletManager.Instance;
     }
 
     // Update is called once per frame
@@ -30,6 +40,16 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rigidBody.linearVelocity *= (1.0f * decay);
         CheckBounds();
+
+        if (Time.frameCount % frameDelay == 0)
+        {
+            //var tempBullet = Instantiate(bulletPrefab);
+            //tempBullet.transform.position = bulletSpawn.position;
+            bulletManager.GetBullet(
+                bulletSpawn.position,
+                BulletType.Player
+                );
+        }
     }
 
     private float GetTouchDirection()

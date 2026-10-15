@@ -1513,6 +1513,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84b51b98e0ee6714896d9662c6b99a4a, type: 3}
+--- !u!4 &1986357631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1429101761793819622, guid: c9145993852ac6147992efe2ecf46ed9, type: 3}
+  m_PrefabInstance: {fileID: 1695174352841182270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1996393255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2011137006}
-  - component: {fileID: 2011137005}
+  - component: {fileID: 2011137007}
   m_Layer: 0
   m_Name: BulletManager
   m_TagString: Untagged
@@ -1637,20 +1642,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2011137005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011137004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 596c09daa9e804a4799ab35cf9fd1915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletManager
-  bulletNumber: 50
-  bulletPrefab: {fileID: 1463148244506649553, guid: 277a58a6c0ff7e7418f08b3c14250143, type: 3}
 --- !u!4 &2011137006
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,6 +1657,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2011137007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011137004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96662286c96166148a6aa15655e03c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletFactory
+  enemyBullet: {fileID: 1463148244506649553, guid: 277a58a6c0ff7e7418f08b3c14250143, type: 3}
+  playerBullet: {fileID: 1463148244506649553, guid: 41eef95bbb4a884499ac21299e2e3614, type: 3}
 --- !u!1 &2014581748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,6 +2170,10 @@ PrefabInstance:
       propertyPath: bounds.min
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 8409816750944073834, guid: c9145993852ac6147992efe2ecf46ed9, type: 3}
+      propertyPath: bulletSpawn
+      value: 
+      objectReference: {fileID: 1986357631}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

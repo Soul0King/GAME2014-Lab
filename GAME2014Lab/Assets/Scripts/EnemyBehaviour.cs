@@ -24,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bulletManager = FindObjectOfType<BulletManager>();
+        bulletManager = BulletManager.Instance;
 
 
         randomSpeed = Random.Range(
@@ -58,7 +58,8 @@ public class EnemyBehaviour : MonoBehaviour
             //var tempBullet = Instantiate(bulletPrefab);
             //tempBullet.transform.position = bulletSpawn.position;
             bulletManager.GetBullet(
-                bulletSpawn.position
+                bulletSpawn.position,
+                BulletType.Enemy
                 );
         }
     }

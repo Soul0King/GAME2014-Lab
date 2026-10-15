@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912c35399cf9cf94aa801ab60aa213b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehaviour
-  speed: 2
+  velocity: {x: 0, y: -2, z: 0}
   bulletBounds:
     min: -5.3
     max: 5.3
