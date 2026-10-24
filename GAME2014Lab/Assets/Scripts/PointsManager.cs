@@ -38,6 +38,14 @@ public class PointsManager : MonoBehaviour
     {
         scoreTextObj = GameObject.Find("PointsLabel");
         scoreText = scoreTextObj.GetComponent<TMP_Text>();
+        if(scene.name == "End")
+        {
+            scoreText.text = "Points: " + points;
+        }
+        if(scene.name == "Play")
+        {
+            ResetScore();
+        }
     }
 
     public void AddScore(int scoreToAdd)
