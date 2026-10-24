@@ -8,6 +8,7 @@ TagManager:
   - Enemy Projectile
   - Player Projectile
   - Enemy
+  - Pickup
   layers:
   - Default
   - TransparentFX

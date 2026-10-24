@@ -38,6 +38,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private float pickupChance;
 
+    private SoundManager sm;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -49,6 +51,7 @@ public class EnemyBehaviour : MonoBehaviour
         frequency = Random.Range(frequencyMin, frequencyMax);
         amplitude = Random.Range(amplitudeMin, amplitudeMax);
         pickupChance = Random.value;
+        sm = FindAnyObjectByType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class EnemyBehaviour : MonoBehaviour
                 bulletSpawn.position,
                 BulletType.Enemy
                 );
+            sm.PlayEnemyLaserSFX();
 
             yield return null;
         }
@@ -83,6 +87,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Player Projectile"))
         {
+            sm.PlayExplosionSFX();
             if(pickupChance > 0.7f)
             {
                 Instantiate(pickupPrefab, transform.position, Quaternion.identity );

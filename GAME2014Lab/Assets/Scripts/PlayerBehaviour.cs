@@ -31,6 +31,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private BulletManager bulletManager;
 
+    private SoundManager sm;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
         bulletManager = BulletManager.Instance;
         StartCoroutine(FireBullets());
         livesText.text = "Lives: " + lives;
+        sm = FindAnyObjectByType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -66,6 +69,7 @@ public class PlayerBehaviour : MonoBehaviour
                     bulletSpawn.position,
                     BulletType.Player
                     );
+            sm.PlayPlayerLaserSFX();
 
             yield return null;
         }
@@ -123,6 +127,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Enemy Projectile"))
         {
+            sm.PlayExplosionSFX();
             lives -= 1;
             livesText.text = "Lives: " + lives;
             if( lives < 0)
@@ -132,6 +137,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if (collision.CompareTag("Pickup"))
         {
+            sm.PlayPickupSFX();
             lives += 1;
             livesText.text = "Lives: " + lives;
         }
