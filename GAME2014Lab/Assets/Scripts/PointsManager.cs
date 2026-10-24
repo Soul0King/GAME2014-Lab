@@ -37,7 +37,10 @@ public class PointsManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         scoreTextObj = GameObject.Find("PointsLabel");
-        scoreText = scoreTextObj.GetComponent<TMP_Text>();
+        if (scoreTextObj != null)
+        {
+            scoreText = scoreTextObj.GetComponent<TMP_Text>();
+        }
         if(scene.name == "End")
         {
             scoreText.text = "Points: " + points;
@@ -67,7 +70,10 @@ public class PointsManager : MonoBehaviour
         {
             points = 0;
             scoreText.text = "Points: " + points;
-
+            if (points < 0)
+            {
+                points = 0;
+            }
         }
     }
 }

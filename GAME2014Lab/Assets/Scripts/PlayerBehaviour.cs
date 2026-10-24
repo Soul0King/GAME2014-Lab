@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -124,10 +125,20 @@ public class PlayerBehaviour : MonoBehaviour
         {
             lives -= 1;
             livesText.text = "Lives: " + lives;
-            if( lives <= 0)
+            if( lives < 0)
             {
-                Debug.Log("You Lose");
+                PlayerDie();
             }
         }
+        if (collision.CompareTag("Pickup"))
+        {
+            lives += 1;
+            livesText.text = "Lives: " + lives;
+        }
+    }
+
+    private void PlayerDie()
+    {
+        SceneManager.LoadScene("End");
     }
 }

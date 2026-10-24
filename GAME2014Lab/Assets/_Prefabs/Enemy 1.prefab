@@ -121,6 +121,7 @@ MonoBehaviour:
   frequencyMax: 3
   amplitudeMin: 0.5
   amplitudeMax: 1.5
+  pickupPrefab: {fileID: 7026510849121032406, guid: ebb0accd434981341978b9baa4e67dcc, type: 3}
 --- !u!60 &5968715954027223773
 PolygonCollider2D:
   m_ObjectHideFlags: 0

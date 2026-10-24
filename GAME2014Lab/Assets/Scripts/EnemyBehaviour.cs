@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -33,6 +34,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Vector3 startPosition;
 
+    [SerializeField] private GameObject pickupPrefab;
+
+    private float pickupChance;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
         startY = Random.Range(0.5f, 3.5f);
         frequency = Random.Range(frequencyMin, frequencyMax);
         amplitude = Random.Range(amplitudeMin, amplitudeMax);
+        pickupChance = Random.value;
     }
 
     // Update is called once per frame
@@ -77,6 +83,10 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (collision.CompareTag("Player Projectile"))
         {
+            if(pickupChance > 0.7f)
+            {
+                Instantiate(pickupPrefab, transform.position, Quaternion.identity );
+            }
             Destroy(gameObject);
         }
     }
