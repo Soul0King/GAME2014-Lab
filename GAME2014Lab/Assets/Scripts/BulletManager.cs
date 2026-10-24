@@ -24,7 +24,6 @@ public class BulletManager
 
     private BulletFactory factory = null;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Initialize(BulletFactory bulletFactory)
     {
         factory = bulletFactory;

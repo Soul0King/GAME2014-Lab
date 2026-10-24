@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
@@ -9,58 +9,75 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private Boundary startingRange;
 
-    private float startingPoint;
-    private float randomSpeed;
+    private float startY;
 
     [SerializeField]
     private Transform bulletSpawn;
+
     [SerializeField]
     GameObject bulletPrefab;
+
     [SerializeField]
-    int frameDelay = 10;
+    float bulletFireRate = 1;
+
+    [Header("Sine Wave Settings")]
+    [SerializeField] private float frequencyMin = 1f;
+    [SerializeField] private float frequencyMax = 3f;
+    [SerializeField] private float amplitudeMin = 0.5f;
+    [SerializeField] private float amplitudeMax = 1.5f;
+
+    private float frequency;
+    private float amplitude;
 
     private BulletManager bulletManager;
+
+    private Vector3 startPosition;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         bulletManager = BulletManager.Instance;
-
-
-        randomSpeed = Random.Range(
-            movementBounds.min,
-            movementBounds.max
-            );
-
-        startingPoint = Random.Range(
-            startingRange.min,
-            startingRange.max
-            );
-
-        transform.position = new Vector2(
-            startingPoint,
-            transform.position.y
-            );
+        startPosition = transform.position;
+        StartCoroutine(FireBullets());
+        startY = Random.Range(0.5f, 3.5f);
+        frequency = Random.Range(frequencyMin, frequencyMax);
+        amplitude = Random.Range(amplitudeMin, amplitudeMax);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(
-            Mathf.PingPong(Time.time, randomSpeed) + startingPoint,
-            transform.position.y
-            );
+        float sinX = Mathf.Sin(Time.time * frequency) * amplitude;
+        transform.position = new Vector3(startPosition.x + sinX, startY, startPosition.z);
     }
 
     void FixedUpdate()
     {
-        if (Time.frameCount % frameDelay == 0) {
-            //var tempBullet = Instantiate(bulletPrefab);
-            //tempBullet.transform.position = bulletSpawn.position;
+
+    }
+
+    IEnumerator FireBullets()
+    {
+        while (true)
+        {
+
+            yield return new WaitForSeconds(bulletFireRate);
+
             bulletManager.GetBullet(
                 bulletSpawn.position,
                 BulletType.Enemy
                 );
+
+            yield return null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player Projectile"))
+        {
+            Destroy(gameObject);
         }
     }
 }

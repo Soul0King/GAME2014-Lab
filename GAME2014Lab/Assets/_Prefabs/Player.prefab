@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 614343103058889136}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalPosition: {x: 0, y: 2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,8 +61,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.8, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1429101761793819622}
   m_Father: {fileID: 0}
@@ -116,8 +116,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.043747023, g: 0.764151, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9731eae082186de439e5f70163f17d35, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,8 +164,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.96, y: 2.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -173,9 +173,70 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+    - - {x: 0.28, y: -1.3199999}
+      - {x: 0.29999998, y: -1.27}
+      - {x: 0.63, y: -1.26}
+      - {x: 0.71999997, y: -1.16}
+      - {x: 0.82, y: -1.24}
+      - {x: 0.95, y: -1.29}
+      - {x: 0.97999996, y: -1.28}
+      - {x: 0.97999996, y: -1.05}
+      - {x: 0.78999996, y: -0.87}
+      - {x: 0.75, y: -0.68}
+      - {x: 0.53, y: -0.52}
+      - {x: 0.52, y: -0.45}
+      - {x: 0.51, y: -0.42}
+      - {x: 0.39999998, y: -0.44}
+      - {x: 0.39999998, y: -0.61}
+      - {x: 0.32, y: -0.59}
+      - {x: 0.35, y: -0.22}
+      - {x: 0.29, y: 0.03}
+      - {x: 0.25, y: 0.14999999}
+      - {x: 0.22, y: 0.38}
+      - {x: 0.14, y: 0.48999998}
+      - {x: 0.13, y: 0.75}
+      - {x: 0.19999999, y: 0.74}
+      - {x: 0.22999999, y: 1.02}
+      - {x: 0.11, y: 1.13}
+      - {x: 0.08038673, y: 1.1300955}
+      - {x: 0.038357604, y: 1.1327527}
+      - {x: -0.03101458, y: 1.129081}
+      - {x: -0.07937218, y: 1.1411104}
+      - {x: -0.11, y: 1.14}
+      - {x: -0.21, y: 1.02}
+      - {x: -0.21, y: 0.77}
+      - {x: -0.14, y: 0.74}
+      - {x: -0.14, y: 0.48999998}
+      - {x: -0.22, y: 0.38}
+      - {x: -0.28, y: 0.02}
+      - {x: -0.34, y: -0.22}
+      - {x: -0.34, y: -0.38}
+      - {x: -0.39999998, y: -0.59999996}
+      - {x: -0.39999998, y: -0.44}
+      - {x: -0.51, y: -0.41}
+      - {x: -0.53999996, y: -0.52}
+      - {x: -0.71, y: -0.65999997}
+      - {x: -0.74, y: -0.69}
+      - {x: -0.74, y: -0.84}
+      - {x: -0.97999996, y: -1.06}
+      - {x: -0.97999996, y: -1.29}
+      - {x: -0.96, y: -1.3}
+      - {x: -0.71999997, y: -1.1899999}
+      - {x: -0.62, y: -1.25}
+      - {x: -0.32999998, y: -1.25}
+      - {x: -0.28, y: -1.3199999}
+      - {x: -0.19, y: -1.3199999}
+      - {x: 0.08, y: -1.25}
+      - {x: 0.12, y: -1.29}
+      - {x: 0.19, y: -1.3199999}
+    - - {x: -0.29, y: -0.78999996}
+      - {x: -0.22999999, y: -0.84}
+      - {x: -0.22, y: -0.83}
+      - {x: -0.28, y: -0.82}
+    - - {x: 0.29, y: -0.78999996}
+      - {x: 0.28, y: -0.82}
+      - {x: 0.22, y: -0.83}
+      - {x: 0.22999999, y: -0.84}
   m_UseDelaunayMesh: 1
 --- !u!50 &1632485600136171707
 Rigidbody2D:
@@ -222,4 +283,4 @@ MonoBehaviour:
     min: 0
     max: 0
   bulletSpawn: {fileID: 0}
-  frameDelay: 10
+  bulletFireRate: 0.5

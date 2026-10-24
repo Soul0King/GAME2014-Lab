@@ -42,8 +42,21 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.CompareTag("Player")) {
-            bulletManager.ReturnBullet(gameObject, type);
-        //}
+        if(type == BulletType.Enemy)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                bulletManager.ReturnBullet(gameObject, type);
+                PointsManager.Instance.AddScore(-2);
+            }
+        }
+        else if(type == BulletType.Player)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                bulletManager.ReturnBullet(gameObject, type);
+                PointsManager.Instance.AddScore(1);
+            }
+        }
     }
 }

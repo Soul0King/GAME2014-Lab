@@ -1,5 +1,8 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -18,7 +21,12 @@ public class PlayerBehaviour : MonoBehaviour
     private Transform bulletSpawn;
 
     [SerializeField]
-    int frameDelay = 10;
+    float bulletFireRate = 1;
+
+    [SerializeField]
+    TMP_Text livesText;
+
+    private int lives = 3;
 
     private BulletManager bulletManager;
 
@@ -28,12 +36,15 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         bulletManager = BulletManager.Instance;
+        StartCoroutine(FireBullets());
+        livesText.text = "Lives: " + lives;
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        
     }
 
     void FixedUpdate()
@@ -41,14 +52,21 @@ public class PlayerBehaviour : MonoBehaviour
         rigidBody.linearVelocity *= (1.0f * decay);
         CheckBounds();
 
-        if (Time.frameCount % frameDelay == 0)
+    }
+
+    IEnumerator FireBullets()
+    {
+        while (true)
         {
-            //var tempBullet = Instantiate(bulletPrefab);
-            //tempBullet.transform.position = bulletSpawn.position;
+
+            yield return new WaitForSeconds(bulletFireRate);
+
             bulletManager.GetBullet(
-                bulletSpawn.position,
-                BulletType.Player
-                );
+                    bulletSpawn.position,
+                    BulletType.Player
+                    );
+
+            yield return null;
         }
     }
 
@@ -97,6 +115,19 @@ public class PlayerBehaviour : MonoBehaviour
                 bounds.max,
                 transform.position.y
                 );
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy Projectile"))
+        {
+            lives -= 1;
+            livesText.text = "Lives: " + lives;
+            if( lives <= 0)
+            {
+                Debug.Log("You Lose");
+            }
         }
     }
 }
